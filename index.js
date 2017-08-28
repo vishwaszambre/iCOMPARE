@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const config = require('./config/database');
+const path = require('path');
 const port = 3000;
 
 mongoose.Promise = global.Promise;
@@ -14,8 +15,10 @@ mongoose.connect(config.uri, (err) => {
     }
 });
 
+app.use(express.static(__dirname + '/client/dist/'))
+
 app.get('/', function (req, res) {
-    res.send('<h1>Hello world</h1>');
+    res.sendFile(path.join(__dirname + '/client/dist/index.html'));
 })
 
 app.listen(port, () => {
