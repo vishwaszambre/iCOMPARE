@@ -1,0 +1,32 @@
+{
+  "name": "icompare",
+  "version": "1.0.0",
+  "description": "Building digital gadget site wherein user across globe can see the latest gadget, compare their prices, see their feature. User can compare different gadgets at peer level.With the help of this latest technology gadgets, user will be updated timely.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vishwaszambre/icompare.git"
+  },
+  "keywords": [
+    "gadget",
+    "mobile",
+    "laptop",
+    "tablet",
+    "compare",
+    "technology",
+    "digital"
+  ],
+  "author": "vishwas-zambre",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vishwaszambre/icompare/issues"
+  },
+  "homepage": "https://github.com/vishwaszambre/icompare#readme",
+  "dependencies": {
+    "express": "^4.15.4",
+    "mongoose": "^4.11.8"
+  }
+}
