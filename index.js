@@ -15,10 +15,11 @@ mongoose.connect(config.uri, (err) => {
     }
 });
 
-app.use(express.static(__dirname + '/client/dist/'))
+//app.use(express.static(__dirname + '/client/dist/'))
 
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname + '/client/dist/index.html'));
+    //res.sendFile(path.join(__dirname + '/client/dist/index.html'));
+    res.send('<h1>Hello world node is awesome!</h1>');
 })
 
 app.listen(port, () => {
