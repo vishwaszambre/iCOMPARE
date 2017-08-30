@@ -1,10 +1,14 @@
 const express = require('express');
+const router = express.Router();
 const app = express();
-const mongoose = require('mongoose');
-const config = require('./config/database');
-const path = require('path');
+const mongoose = require('mongoose');//Node tool for MongoDB
+const config = require('./config/database');//Mongoose Config
+const path = require('path');//Node JS Package for filr path
+const authentication = require('./routes/authentication')(router);
+const bodyParser = require('body-parser');
 const port = 3000;
 
+//Database Connection
 mongoose.Promise = global.Promise;
 mongoose.connect(config.uri, (err) => {
     if (err) {
@@ -16,6 +20,10 @@ mongoose.connect(config.uri, (err) => {
 });
 
 //app.use(express.static(__dirname + '/client/dist/'))
+//Provide static directory for frontend
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use('/authentication', authentication);
 
 app.get('/', function (req, res) {
     //res.sendFile(path.join(__dirname + '/client/dist/index.html'));
