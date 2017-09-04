@@ -4,6 +4,7 @@ mongoose.Promise = global.Promise;
 const User = require('../models/user');
 module.exports = (router) => {
     router.post('/register', (req, res) => {
+        console.log(req.body);
         if (!req.body.firstname) {
             res.json({ success: false, message: 'You must provide a firstname' });
         } else {
@@ -34,9 +35,21 @@ module.exports = (router) => {
                                         if (err.errors) {
                                             if (err.errors.email) {
                                                 res.json({ success: false, message: err.errors.email.message })
-                                            } else {
-                                                res.json({ success: false, message: 'Could not saved the user: ' + err });
                                             }
+                                            if (err.errors.firstname) {
+                                                res.json({ success: false, message: err.errors.firstname.message });
+                                            }
+                                            if (err.errors.lastname) {
+                                                res.json({ success: false, message: err.errors.lastname.message });
+                                            }
+                                            if (err.errors.mobile) {
+                                                res.json({ success: false, message: err.errors.mobile.message });
+                                            }
+                                            if (err.errors.password) {
+                                                res.json({ success: false, message: err.errors.password.message });
+                                            }
+                                        } else {
+                                            res.json({ success: false, message: 'Could not saved the user: ' + err });
                                         }
                                     }
                                 } else {

@@ -23,6 +23,18 @@ let validEmailChecker = (email) => {
     }
 }
 
+let validPasswordChecker = (password) => {
+    if (!password) {
+        return false;
+    } else {
+        //console.log('test-1');
+        const regExp = new RegExp(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/);
+        //console.log('test-2');
+        return regExp.test(password);
+        // console.log('test-3');
+    }
+}
+
 let firstnameLengthChecker = (firstname) => {
     if (!firstname) {
         return false;
@@ -35,12 +47,45 @@ let firstnameLengthChecker = (firstname) => {
     }
 };
 
-let validFirstname = () => {
+let lastnameLengthChecker = (lastname) => {
+    if (!lastname) {
+        return false;
+    } else {
+        if (lastname.length < 2 || lastname.length > 15) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+}
+let mobileLengthChecker = (mobile) => {
+    if (!mobile) {
+        return false;
+    } else {
+        if (mobile.toString().length != 10) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+}
+
+let validFirstname = (firstname) => {
     if (!firstname) {
         return false;
     } else {
         const regExp = new RegExp(/^[a-zA-Z0-9]+$/);
         return regExp.test(firstname);
+    }
+}
+
+let validLastname = (lastname) => {
+    if (!lastname) {
+        return false;
+    } else {
+        const regExp = new RegExp(/^[a-zA-Z0-9]+$/);
+        return regExp.test(lastname);
     }
 }
 
@@ -51,7 +96,18 @@ const firstnameValidators = [
     },
     {
         validator: validFirstname,
-        message: 'Please enter valid name'
+        message: 'Please enter valid firstname'
+    }
+]
+
+const lastnameValidator = [
+    {
+        validator: lastnameLengthChecker,
+        message: 'Lastname should be more than 3 but no less than 15'
+    },
+    {
+        validator: validLastname,
+        message: 'Please enter valid lastname'
     }
 ]
 
@@ -63,15 +119,29 @@ const emailValidators = [
     {
         validator: validEmailChecker,
         message: 'Please enter a valid email address'
-    }]
+    }
+]
+
+const mobileValidator = [
+    {
+        validator: mobileLengthChecker,
+        message: 'Please enter a valid mobile number'
+    }
+]
+const passwordValidator = [
+    {
+        validator: validPasswordChecker,
+        message: 'Password must include one lowercase character, one uppercase character, a number, and a special character.'
+    }
+]
 
 const Schema = mongoose.Schema;
 const userSchema = new Schema({
     firstname: { type: String, required: true, validate: firstnameValidators },
-    lastname: { type: String, required: true },
-    mobile: { type: Number, required: true },
+    lastname: { type: String, required: true, validate: lastnameValidator },
+    mobile: { type: Number, required: true, validate: mobileValidator },
     email: { type: String, required: true, lowercase: true, unique: true, validate: emailValidators },
-    password: { type: String, required: true },
+    password: { type: String, required: true, validate: passwordValidator },
 });
 
 
