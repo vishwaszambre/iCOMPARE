@@ -7,6 +7,7 @@ const path = require('path');//Node JS Package for filr path
 const authentication = require('./routes/authentication')(router);
 const bodyParser = require('body-parser');
 const port = 3000;
+const cors = require('cors');
 
 //Database Connection
 mongoose.Promise = global.Promise;
@@ -18,6 +19,10 @@ mongoose.connect(config.uri, (err) => {
         console.log('Database connected successfully on port:27017 to ' + config.db);
     }
 });
+
+app.use(cors({
+    origin: 'http://localhost:4200'
+}));
 
 //app.use(express.static(__dirname + '/client/dist/'))
 //Provide static directory for frontend

@@ -1,0 +1,71 @@
+<h1 class="page-header">Registration form</h1>
+
+<form [formGroup]="registerForm" (submit)="onRegisterSubmit()" class="col-md-6">
+  <div class="form-group">
+    <label for="firstname">Firstname</label>
+    <div [ngClass]="{'has-error':(registerForm.controls.firstname.errors && registerForm.controls.firstname.dirty),'has-success':!registerForm.controls.firstname.errors}">
+      <input type="text" name="firstname" class="form-control" autocomplete="off" placeholder="firstname" formControlName="firstname"
+      />
+      <ul class="help-block">
+        <li *ngIf="registerForm.controls.firstname.errors?.required && registerForm.controls.firstname.dirty" class="alert alert-danger">This field is required</li>
+        <li *ngIf="registerForm.controls.firstname.errors?.minlength || registerForm.controls.firstname.errors?.maxlength" class="alert alert-danger">Minimum characters:3, Maximum characters:15</li>
+        <li *ngIf="registerForm.controls.firstname.errors?.validateUsername && registerForm.controls.firstname.dirty" class="alert alert-danger">Firstname must not contain special character</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="lastname">Lastname</label>
+    <div [ngClass]="{'has-error':(registerForm.controls.lastname.errors && registerForm.controls.lastname.dirty),'has-success':!registerForm.controls.lastname.errors}">
+      <input type="text" name="lastname" class="form-control" autocomplete="off" placeholder="lastname" formControlName="lastname"
+      />
+      <ul class="help-block">
+        <li *ngIf="registerForm.controls.lastname.errors?.required && registerForm.controls.lastname.dirty" class="alert alert-danger">This field is required</li>
+        <li *ngIf="registerForm.controls.lastname.errors?.minlength || registerForm.controls.lastname.errors?.maxlength" class="alert alert-danger">Minimum characters:3, Maximum characters:15</li>
+        <li *ngIf="registerForm.controls.lastname.errors?.validateUsername && registerForm.controls.lastname.dirty" class="alert alert-danger">Lastname must not contain special character</li>
+      </ul>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="mobile">Mobile</label>
+    <div [ngClass]="{'has-error':(registerForm.controls.mobile.errors && registerForm.controls.mobile.dirty),'has-success':!registerForm.controls.mobile.errors}">
+      <input type="text" name="mobile" class="form-control" autocomplete="off" placeholder="mobile" formControlName="mobile" />
+      <ul class="help-block">
+        <li *ngIf="registerForm.controls.mobile.errors?.required && registerForm.controls.mobile.dirty" class="alert alert-danger">This field is required</li>
+        <li *ngIf="registerForm.controls.mobile.errors?.minlength || registerForm.controls.mobile.errors?.maxlength" class="alert alert-danger">Mobile number should be atleast 10 digit</li>
+        <li *ngIf="registerForm.controls.mobile.errors?.validateMobile && registerForm.controls.mobile.dirty" class="alert alert-danger">Please enter valid mobile-no</li>
+      </ul>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <div [ngClass]="{'has-error':(registerForm.controls.email.errors && registerForm.controls.email.dirty),'has-success':!registerForm.controls.email.errors}">
+      <input type="text" name="email" class="form-control" autocomplete="off" placeholder="email" formControlName="email" />
+      <ul class="help-block">
+        <li *ngIf="registerForm.controls.email.errors?.required && registerForm.controls.email.dirty" class="alert alert-danger">This field is required</li>
+        <li *ngIf="registerForm.controls.email.errors?.validateEmail && registerForm.controls.email.dirty" class="alert alert-danger">Please enter valid email address</li>
+      </ul>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <div [ngClass]="{'has-error':(registerForm.controls.password.errors && registerForm.controls.password.dirty),'has-success':!registerForm.controls.password.errors}">
+      <input type="password" name="password" class="form-control" autocomplete="off" placeholder="password" formControlName="password"
+      />
+      <ul class="help-block">
+        <li *ngIf="registerForm.controls.password.errors?.required && registerForm.controls.password.dirty" class="alert alert-danger">This field is required</li>
+        <li *ngIf="registerForm.controls.password.errors?.minlength || registerForm.controls.password.errors?.maxlength" class="alert alert-danger">Minimum characters:5, Maximum characters:15</li>
+        <li *ngIf="registerForm.controls.password.errors?.validatePassword && registerForm.controls.password.dirty" class="alert alert-danger">Password must include one lowercase character, one uppercase character, a number, and a special character.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Submit Input 
+  <input [disabled]="!form.valid" type="submit" class="btn btn-primary" value="Submit" />-->
+
+  <input [disabled]="!registerForm.valid" type="submit" class="btn btn-primary" value="Submit" />
+  <input type="reset" class="btn btn-default" value="Reset" />
+
+</form>
+
+<!--
+<p>Firstname:{{ registerForm.controls.firstname.value }}</p>-->
