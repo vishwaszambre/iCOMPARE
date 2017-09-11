@@ -11,15 +11,15 @@ import { AuthService } from './services/auth.service';
 import { HttpModule } from '@angular/http';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
     DashboardComponent,
-    RegisterComponent,
+    RegisterComponent
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,

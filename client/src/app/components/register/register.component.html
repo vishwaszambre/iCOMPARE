@@ -6,6 +6,7 @@
     <div [ngClass]="{'has-error':(registerForm.controls.firstname.errors && registerForm.controls.firstname.dirty),'has-success':!registerForm.controls.firstname.errors}">
       <input type="text" name="firstname" class="form-control" autocomplete="off" placeholder="firstname" formControlName="firstname"
       />
+
       <ul class="help-block">
         <li *ngIf="registerForm.controls.firstname.errors?.required && registerForm.controls.firstname.dirty" class="alert alert-danger">This field is required</li>
         <li *ngIf="registerForm.controls.firstname.errors?.minlength || registerForm.controls.firstname.errors?.maxlength" class="alert alert-danger">Minimum characters:3, Maximum characters:15</li>
@@ -69,3 +70,9 @@
 
 <!--
 <p>Firstname:{{ registerForm.controls.firstname.value }}</p>-->
+<script>
+  $(document).ready(function () {
+    $('[data-toggle="popover"]').popover();
+  });
+
+</script>

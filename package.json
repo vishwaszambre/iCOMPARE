@@ -26,6 +26,10 @@
   },
   "homepage": "https://github.com/vishwaszambre/icompare#readme",
   "dependencies": {
+    "@angular/cdk": "^2.0.0-beta.10",
+    "@angular/common": "^4.4.0-RC.0",
+    "@angular/core": "^4.4.0-RC.0",
+    "@angular/material": "^2.0.0-beta.10",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.2",
     "cors": "^2.8.4",
