@@ -105,7 +105,6 @@ export class RegisterComponent implements OnInit {
       mobile: this.registerForm.get('mobile').value,
       email: this.registerForm.get('email').value,
       password: this.registerForm.get('password').value,
-
     }
     this.authService.registerUser(user).subscribe(data => {
       console.log(data);
